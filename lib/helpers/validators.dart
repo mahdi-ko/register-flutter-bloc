@@ -27,8 +27,6 @@ String? emailValidator({required String? email}) {
 String? passwordValidator({required String? password}) {
   String? errorMessage;
   errorMessage = _nullValidator(password);
-  errorMessage ??=
-      password!.length >= 7 ? null : "Please enter at least 7 characters";
   errorMessage ??= password!.contains(RegExp(r'[0-9]'))
       ? null
       : "Please enter at least 1 number";
@@ -38,6 +36,8 @@ String? passwordValidator({required String? password}) {
   errorMessage ??= password!.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))
       ? null
       : "Please enter at least 1 special character";
+  errorMessage ??=
+      password!.length >= 7 ? null : "Please enter at least 7 characters";
   return errorMessage;
 }
 
